@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Album Foto</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .album-container {
+            width: 100%;
+            height: 100vh; /* Memastikan gambar menempati layar penuh */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 10px;
+            box-sizing: border-box;
+            overflow: hidden; /* Tidak ada scroll */
+        }
+        .album-container img {
+            width: 100%; /* Agar gambar mengikuti lebar kontainer */
+            height: auto; /* Menjaga proporsi gambar */
+            object-fit: cover;
+            position: absolute; /* Agar gambar bisa ditumpuk */
+            opacity: 0; /* Gambar mulai tidak terlihat */
+            transition: opacity 1s ease-in-out; /* Transisi untuk mengganti gambar */
+        }
+        .album-container img.show {
+            opacity: 1; /* Menampilkan gambar dengan efek transisi */
+        }
+        /* Gaya untuk tombol melanjutkan */
+        .continue-button {
+            position: absolute;
+            bottom: 50px; /* Menempatkan tombol sedikit di atas */
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .continue-button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="album-container" id="albumContainer">
+        <!-- Gambar-gambar album (20 gambar JPG) -->
+        <img src="FOTO 1.jpg" alt="Foto 1" class="slide">
+        <img src="FOTO 2.jpg" alt="Foto 2" class="slide">
+        <img src="FOTO 3.jpg" alt="Foto 3" class="slide">
+        <img src="FOTO 4.jpg" alt="Foto 4" class="slide">
+        <img src="FOTO 5.jpg" alt="Foto 5" class="slide">
+        <img src="FOTO 6.jpg" alt="Foto 6" class="slide">
+        <img src="FOTO 7.jpg" alt="Foto 7" class="slide">
+        <img src="FOTO 8.jpg" alt="Foto 8" class="slide">
+        <img src="FOTO 9.jpg" alt="Foto 9" class="slide">
+        <img src="FOTO 10.jpg" alt="Foto 10" class="slide">
+        <img src="FOTO 11.jpg" alt="Foto 11" class="slide">
+        <img src="FOTO 12.jpg" alt="Foto 12" class="slide">
+        <img src="FOTO 13.jpg" alt="Foto 13" class="slide">
+        <img src="FOTO 14.jpg" alt="Foto 14" class="slide">
+        <img src="FOTO 15.jpg" alt="Foto 15" class="slide">
+        <img src="FOTO 16.jpg" alt="Foto 16" class="slide">
+        <img src="FOTO 17.jpg" alt="Foto 17" class="slide">
+        <img src="FOTO 18.jpg" alt="Foto 18" class="slide">
+        <img src="FOTO 19.jpg" alt="Foto 19" class="slide">
+        <img src="FOTO 20.jpg" alt="Foto 20" class="slide">
+    </div>
+
+    <!-- Tombol untuk melanjutkan gambar -->
+    <button class="continue-button" onclick="nextImage()">Lanjutkan</button>
+
+    <!-- Musik Otomatis tanpa kontrol -->
+    <audio autoplay loop>
+        <source src="DIBAWAH LANGIT YG SAMA.mp3" type="audio/mp3">
+        Your browser does not support the audio element.
+    </audio>
+
+    <script>
+        let currentIndex = 0; // Menyimpan indeks gambar yang sedang ditampilkan
+        const images = document.querySelectorAll('.album-container img');
+
+        // Fungsi untuk mengganti gambar
+        function nextImage() {
+            // Menyembunyikan gambar yang sedang ditampilkan
+            images[currentIndex].classList.remove('show');
+            
+            // Mengubah indeks gambar berikutnya
+            currentIndex = (currentIndex + 1) % images.length;
+            
+            // Menampilkan gambar berikutnya
+            images[currentIndex].classList.add('show');
+        }
+
+        // Menampilkan gambar pertama saat pertama kali halaman dimuat
+        images[currentIndex].classList.add('show');
+    </script>
+</body>
+</html>
